@@ -10,7 +10,7 @@
     --text-primary: #e6e6eb;
     --text-secondary: #a0a4b8;
     --accent: #6ea8fe;
-    /* --border-subtle: #252a3a; */
+    --border-subtle: #252a3a;
 }
 
 body {
@@ -49,10 +49,7 @@ main {
 
 section {
     margin-bottom: 3rem;
-    padding: 2rem;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    padding: 5rem;
 }
 
 h1 {
@@ -81,6 +78,89 @@ li {
 }
 
 section > h2 {
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 0.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+section > h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.project-item-card,
+.experience-item-card,
+.education-item-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.project-grid,
+.experience-grid,
+.education-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.project-item-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+.project-item-card em {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.project-item-card strong {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-item-card p {
+    max-width: none;
+}
+
+.project-item-card p strong + span,
+.project-item-card p strong + span + span {
+    margin-right: 0.5rem;
+}
+
+.project-item-card a {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.project-item-card a:hover {
+    background-color: var(--accent);
+    color: #000;
+    text-decoration: none;
+}
+
+.project-item-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
