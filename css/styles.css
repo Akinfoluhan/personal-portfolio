@@ -42,7 +42,7 @@ a:hover {
 }
 
 main {
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
 }
@@ -83,21 +83,24 @@ li {
     margin-bottom: 0.5rem;
 }
 
-section > h2 {
+.section-title {
     position: relative;
     padding-bottom: 0.75rem;
+    text-align: center;
 }
 
-section > h2::after {
-    content: '';
+.section-title::after {
+    content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 48px;
-    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 4px;
     background-color: var(--accent);
-    border-radius: 2px;
+    border-radius: 999px;
 }
+
 
 .section-intro {
     max-width: 60ch;
@@ -106,14 +109,19 @@ section > h2::after {
     color: var(--text-secondary);
 }
 
-/* .project-item-card,
-.experience-item-card,
+.experience-item-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
 .education-item-card {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
     padding: 2rem;
-} */
+}
 
 .project-grid,
 .experience-grid,
@@ -132,19 +140,82 @@ section > h2::after {
     margin-bottom: 0.5rem;
 }
 
-/* .project-item-card p strong + span,
-.project-item-card p strong + span + span {
-    margin-right: 0.5rem;
-} */
-/* 
-.project-item-card > *:not(:last-child) {
-    margin-bottom: 0.75rem;
-} */
-
 #projects {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    border: none;
+    border-radius: 0;
+    padding: 6rem 0;
+    background: radial-gradient(
+        80% 60% at 50% 0%,
+        rgba(110, 168, 254, 0.12),
+        rgba(5, 13, 34, 0)
+    ),
+    linear-gradient(
+        180deg,
+        rgba(22, 26, 35, 0.95),
+        rgba(22, 26, 35, 0.85)
+    );
+}
+
+#projects > .section-title,
+#projects > .section-intro,
+#projects .project-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+#projects .section-title {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+#projects > .section-intro {
+    text-align: center;
+    margin: 0.75rem auto 3.75rem;
+}
+
+#projects .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+}
+
+@media (max-width: 900px) {
+    #projects .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#projects h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 0;
+    position: relative;
+}
+
+#projects > h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+#projects > p {
+    max-width: 55ch;
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+#projects .project-item-card {
+    background: rgba(10, 16, 34, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
 }
 
 .project-tech {
@@ -152,20 +223,21 @@ section > h2::after {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.75rem;
+    margin-bottom: 1.25rem;
 }
 
 .project-tech span {
     background-color: rgba(110, 168, 254, 0.08);
     border: 1px solid rgba(110, 168, 254, 0.35);
     color: var(--accent);
-    padding: 0.35rem 0.75rem;
+    padding: 0.28rem 0.7rem;
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     display: inline-block;
 }
 
 .project-item-card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
 
@@ -177,9 +249,10 @@ section > h2::after {
 
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
-    padding: 1.75rem;
+    padding: 2.1rem;
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
 }
 
 .project-item-card p {
@@ -195,6 +268,7 @@ section > h2::after {
 .project-item-card em {
     font-size: 0.85rem;
     color: var(--text-secondary);
+    opacity: 0.9;
 }
 
 .project-item-card:hover {
@@ -203,18 +277,21 @@ section > h2::after {
 }
 
 .project-item-card a {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1.25rem;
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.42rem 0.85rem;
     border-radius: 999px;
     border: 1px solid var(--accent);
     color: var(--accent);
-    font-size: 0.9rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    line-height: 1.1;
 }
 
 .project-item-card a:hover {
-    background-color: var(--accent);
-    color: #050d22;
-    text-decoration: none;
+    background: rgba(110, 168, 254, 0.12);
 }
+
