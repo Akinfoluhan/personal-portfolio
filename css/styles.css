@@ -141,20 +141,16 @@ li {
     border: none;
     border-radius: 0;
     padding: 6rem 0;
-    background: radial-gradient(
-        80% 60% at 50% 0%,
-        rgba(110, 168, 254, 0.12),
-        rgba(5, 13, 34, 0)
-    ),
-    linear-gradient(
-        180deg,
-        rgba(22, 26, 35, 0.95),
-        rgba(22, 26, 35, 0.85)
-    );
+    background: radial-gradient(80% 60% at 50% 0%,
+            rgba(110, 168, 254, 0.12),
+            rgba(5, 13, 34, 0)),
+        linear-gradient(180deg,
+            rgba(22, 26, 35, 0.95),
+            rgba(22, 26, 35, 0.85));
 }
 
-#projects > .section-title,
-#projects > .section-intro,
+#projects>.section-title,
+#projects>.section-intro,
 #projects .project-grid {
     max-width: 1400px;
     margin: 0 auto;
@@ -166,7 +162,7 @@ li {
     margin-bottom: 0.75rem;
 }
 
-#projects > .section-intro {
+#projects>.section-intro {
     text-align: center;
     margin: 0.75rem auto 3.75rem;
 }
@@ -192,13 +188,13 @@ li {
     position: relative;
 }
 
-#projects > h2 {
+#projects>h2 {
     border-bottom: none;
     padding-bottom: 0;
 }
 
 
-#projects > p {
+#projects>p {
     max-width: 55ch;
     margin-bottom: 2.5rem;
     color: var(--text-secondary);
@@ -234,11 +230,9 @@ li {
     display: flex;
     flex-direction: column;
 
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.03),
-        rgba(255, 255, 255, 0.01)
-    );
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
 
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
@@ -294,7 +288,7 @@ li {
     max-width: 900px;
     margin: 0.75rem auto 3rem;
 }
-  
+
 #skills .skills-grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -317,14 +311,14 @@ li {
     padding: 1.75rem 1.75rem 1.5rem;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
-  
+
 #skills .skill-item-card h3 {
     font-size: 1.15rem;
     margin: 0 0 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-  
+
 #skills .skill-list {
     display: flex;
     flex-wrap: wrap;
@@ -336,10 +330,10 @@ li {
     background-color: rgba(110, 168, 254, 0.08);
     border: 1px solid rgba(110, 168, 254, 0.35);
     color: var(--accent);
-  
+
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-  
+
     font-size: 0.82rem;
     line-height: 1;
     display: inline-flex;
@@ -350,20 +344,18 @@ li {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-  
+
     padding: 6rem 0;
     border: none;
     border-radius: 0;
-  
-    background: linear-gradient(
-        180deg,
-      rgba(22, 26, 35, 0.95),
-      rgba(22, 26, 35, 0.85)
-    );
+
+    background: linear-gradient(180deg,
+            rgba(22, 26, 35, 0.95),
+            rgba(22, 26, 35, 0.85));
 }
-  
-#skills > .section-title,
-#skills > .section-intro,
+
+#skills>.section-title,
+#skills>.section-intro,
 #skills .skills-grid {
     max-width: 1400px;
     margin: 0 auto;
@@ -374,22 +366,152 @@ li {
     font-size: 3rem;
     margin-bottom: 0.75rem;
 }
-  
-#skills > .section-intro {
+
+#skills>.section-intro {
     text-align: center;
     margin: 0.75rem auto 3.25rem;
 }
-  
+
 #skills .skills-grid {
     gap: 2.25rem;
     align-items: stretch;
 }
-  
+
 #skills .skill-item-card {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-  
+
 #skills .skill-item-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
+
+/* Experience Section */
+#experience {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  
+    padding: 6rem 0;
+    border: none;
+    border-radius: 0;
+  
+    background: linear-gradient(
+        180deg,
+        rgba(5, 13, 34, 0.98),
+        rgba(5, 13, 34, 0.88)
+        );
+}
+
+#experience > .section-title,
+#experience > .section-intro,
+#experience .experience-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+#experience .section-title {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+#experience > .section-intro {
+    text-align: center;
+    max-width: 60ch;
+    margin: 0.75rem auto 3.75rem;
+}
+
+#experience .experience-grid {
+    gap: 2.25rem;
+}
+
+#experience .experience-item-card {
+    background: rgba(22, 26, 35, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2.1rem;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+#experience .experience-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1.25rem;
+}
+
+#experience .experience-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+  
+    background: rgba(110, 168, 254, 0.12);
+    border: 1px solid rgba(110, 168, 254, 0.25);
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+#experience .experience-role h3 {
+    margin: 0;
+    font-size: 1.35rem;
+}
+
+#experience .experience-company {
+    margin: 0.25rem 0 0;
+    color: var(--text-secondary);
+}
+  
+#experience .experience-dates p {
+    margin: 0.25rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+#experience .experience-bullets {
+    margin: 0 0 1.25rem 1.2rem;
+}
+  
+#experience .experience-bullets li {
+    margin-bottom: 0.6rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+#experience .experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+  
+#experience .experience-skills span {
+    background-color: rgba(110, 168, 254, 0.08);
+    border: 1px solid rgba(110, 168, 254, 0.35);
+    color: var(--accent);
+  
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (max-width: 700px) {
+    #experience .experience-top {
+        grid-template-columns: auto 1fr;
+    }
+  
+    #experience .experience-dates {
+        grid-column: 2 / 3;
+    }
+  
+    #experience .experience-dates p {
+        text-align: left;
+    }
+}
+
