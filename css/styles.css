@@ -471,7 +471,7 @@ li {
 
 /* Navigation Bar */
 
-   header {
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -533,6 +533,22 @@ nav {
         row-gap: 0.75rem;
         column-gap: 1.25rem;
     }
+}
+
+.navigation-home {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+  
+.navigation-home:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+  
+.navigation-home:focus-visible {
+    outline: 2px solid rgba(110, 168, 254, 0.6);
+    outline-offset: 4px;
+    border-radius: 8px;
 }
 
 /* Hero Section */
