@@ -684,8 +684,6 @@ nav {
 
 /* Education Section */
 
-/* Education Section (Figma match) */
-
 #education {
     width: 100vw;
     margin-left: calc(50% - 50vw);
@@ -695,7 +693,6 @@ nav {
     border: none;
     border-radius: 0;
 
-    /* Figma looks flatter + cleaner (less glow) */
     background: linear-gradient(
         180deg,
         rgba(22, 26, 35, 0.95),
@@ -712,25 +709,23 @@ nav {
 
 #education .section-title {
     font-size: 3rem;
-    margin-bottom: 3rem; /* slightly tighter like Figma */
+    margin-bottom: 3rem;
 }
 
 #education .education-grid {
     max-width: 1280px;
     display: grid;
     width: 100%;
-    gap: 2rem; /* tighter spacing between the two cards */
+    gap: 2rem;
 }
 
 #education .education-item-card {
-    /* darker navy like the Figma cards */
     background: rgba(10, 16, 34, 0.88);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
 
-    padding: 2.35rem 2.35rem; /* a touch roomier like Figma */
+    padding: 2.35rem 2.35rem;
 
-    /* reduce “floaty” look */
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
 
     display: flex;
@@ -751,7 +746,6 @@ nav {
     font-size: 1.6rem;
     line-height: 1;
 
-    /* THIS fixes the “black glyph” issue on some systems */
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 
     flex: 0 0 auto;
@@ -760,7 +754,7 @@ nav {
 
 #education .education-degree {
     margin: 0;
-    font-size: 1.6rem; /* slightly bigger like Figma */
+    font-size: 1.6rem;
     line-height: 1.2;
     color: var(--text-primary);
 }
