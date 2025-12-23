@@ -1316,3 +1316,62 @@ nav {
 }
 
 .navigation-links a.is-active { color: var(--accent); opacity: 1; }
+
+/* Contact: GitHub image icon inside the circle */
+#contact .contact-info-icon {
+    overflow: hidden; /* keeps it clean inside the circle */
+  }
+  
+#contact .contact-info-icon .github-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    
+    /* If your png is black, this turns it white to match the theme.
+       If your png is already white, you can remove this line. */
+    filter: brightness(0) invert(1);
+}
+
+  /* Projects: add GitHub icon + external arrow to "View" buttons */
+
+/* make sure spacing is nice */
+#projects .project-item-card a {
+    gap: 0.5rem;
+  }
+  
+  /* GitHub icon for GitHub links */
+#projects .project-item-card a[href*="github.com"]::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background: url("../assets/icons/github-icon.png") center / contain no-repeat;
+  
+    /* same note as above: remove if your icon is already white */
+    filter: brightness(0) invert(1);
+}
+  
+  /* Arrow to hint it opens in a new tab */
+#projects .project-item-card a[target="_blank"]::after {
+    content: "↗";
+    line-height: 1;
+    opacity: 0.9;
+    margin-left: 0.1rem;
+}
+  
+  /* Contact: GitHub icon image inside the circle */
+#contact .contact-info-icon .github-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+}
+  
+.github-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    fill: currentColor;
+}
+  
