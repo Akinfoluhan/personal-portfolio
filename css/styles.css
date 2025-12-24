@@ -11,6 +11,7 @@
     --text-secondary: #a0a4b8;
     --accent: #6ea8fe;
     --border-subtle: #252a3a;
+    
       /* Section backgrounds (Figma-style alternation) */
     --section-bg-dark: radial-gradient(
         80% 60% at 50% 0%,
@@ -64,7 +65,7 @@ main {
 }
 
 section {
-    margin-bottom: 3rem;
+    margin-bottom: 0;
     padding: 0;
 }
 
@@ -1137,7 +1138,7 @@ nav {
     margin-right: calc(50% - 50vw);
 
     padding: 2.25rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
     background: rgba(5, 13, 34, 0.98);
 }
 
