@@ -11,6 +11,28 @@
     --text-secondary: #a0a4b8;
     --accent: #6ea8fe;
     --border-subtle: #252a3a;
+      /* Section backgrounds (Figma-style alternation) */
+    --section-bg-dark: radial-gradient(
+        80% 60% at 50% 0%,
+        rgba(110, 168, 254, 0.10),
+        rgba(5, 13, 34, 0)
+        ),
+    linear-gradient(
+        180deg,
+        rgba(5, 13, 34, 0.98),
+        rgba(5, 13, 34, 0.88)
+        );
+    --section-bg-light: 
+    linear-gradient(
+        180deg,
+        rgba(22, 26, 35, 0.95),
+        rgba(22, 26, 35, 0.85)
+        );
+
+    /* Card surfaces that sit on those section backgrounds */
+    --surface-on-dark: rgba(22, 26, 35, 0.70); /* lighter card */
+    --surface-on-light: rgba(10, 16, 34, 0.88); /* darker card */
+
 }
 
 body {
@@ -342,15 +364,7 @@ nav {
     border: none;
     border-radius: 0;
 
-    background: radial-gradient(
-        120% 70% at 50% 0%,
-        rgba(110, 168, 254, 0.18),
-        rgba(5, 13, 34, 0) 60%),
-    linear-gradient(
-        180deg,
-        rgba(5, 13, 34, 0.98),
-        rgba(5, 13, 34, 0.90)
-    );
+    background: var(--section-bg-dark);
 }
 
 #about > .section-title,
@@ -377,7 +391,7 @@ nav {
 }
 
 #about .about-card {
-    background: rgba(22, 26, 35, 0.92);
+    background: var(--surface-on-dark);
     border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 16px;
 
@@ -464,7 +478,7 @@ nav {
 }
 
 #skills .skill-item-card {
-    background: rgba(10, 16, 34, 0.88);
+    background: var(--surface-on-light);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 1.75rem 1.75rem 1.5rem;
@@ -509,9 +523,7 @@ nav {
     border: none;
     border-radius: 0;
 
-    background: linear-gradient(180deg,
-            rgba(5, 13, 34, 0.98),
-            rgba(5, 13, 34, 0.92));
+    background: var(--section-bg-light);
 }
 
 #skills > .section-title,
@@ -554,12 +566,7 @@ nav {
     border: none;
     border-radius: 0;
     padding: 6rem 0;
-    background: radial-gradient(80% 60% at 50% 0%,
-            rgba(110, 168, 254, 0.12),
-            rgba(5, 13, 34, 0)),
-            linear-gradient(180deg,
-            rgba(5, 13, 34, 0.98),
-            rgba(5, 13, 34, 0.92));
+    background: var(--section-bg-dark);
 }
 
 #projects > .section-title,
@@ -618,7 +625,7 @@ nav {
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     overflow: hidden;
-    background: rgba(10, 16, 34, 0.88);
+    background: var(--surface-on-dark);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
 }
@@ -685,11 +692,7 @@ nav {
     border: none;
     border-radius: 0;
   
-    background: linear-gradient(
-        180deg,
-        rgba(5, 13, 34, 0.98),
-        rgba(5, 13, 34, 0.92)
-        );
+    background: var(--section-bg-light);
 }
 
 #experience > .section-title,
@@ -716,7 +719,7 @@ nav {
 }
 
 #experience .experience-item-card {
-    background: rgba(22, 26, 35, 0.92);
+    background: var(--surface-on-light);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 2.1rem;
@@ -815,11 +818,7 @@ nav {
     border: none;
     border-radius: 0;
 
-    background: linear-gradient(
-        180deg,
-        rgba(5, 13, 34, 0.98),
-        rgba(5, 13, 34, 0.92)
-    );
+    background: var(--section-bg-dark);
 }
 
 #education > .section-title,
@@ -842,7 +841,7 @@ nav {
 }
 
 #education .education-item-card {
-    background: rgba(10, 16, 34, 0.88);
+    background: var(--surface-on-dark);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
 
@@ -942,11 +941,7 @@ nav {
     border: none;
     border-radius: 0;
 
-    background: linear-gradient(
-        180deg,
-        rgba(5, 13, 34, 0.98),
-        rgba(5, 13, 34, 0.92)
-    );
+    background: var(--section-bg-light);
 }
 
 #contact > .section-title,
@@ -977,7 +972,7 @@ nav {
 }
 
 #contact .contact-card {
-    background: rgba(10, 16, 34, 0.88);
+    background: var(--surface-on-light);
     border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 16px;
     padding: 2.25rem 2.15rem;
