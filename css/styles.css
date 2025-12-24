@@ -215,7 +215,7 @@ li {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
-#projects .project-item-card a {
+#projects .project-btn {
     margin-top: auto;
     align-self: flex-start;
     display: inline-flex;
@@ -228,10 +228,23 @@ li {
     font-weight: 600;
     font-size: 0.85rem;
     line-height: 1.1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-#projects .project-item-card a:hover {
+#projects .project-btn:hover {
     background: rgba(110, 168, 254, 0.12);
+}
+
+#projects .project-btn::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  
+    /* SVG GitHub mark (white) */
+    background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12 .5C5.73.5.5 5.74.5 12.2c0 5.18 3.44 9.57 8.2 11.12.6.12.82-.26.82-.58v-2.23c-3.34.74-4.04-1.65-4.04-1.65-.55-1.42-1.34-1.8-1.34-1.8-1.1-.77.08-.76.08-.76 1.22.09 1.86 1.27 1.86 1.27 1.08 1.9 2.83 1.35 3.52 1.03.11-.8.42-1.35.76-1.66-2.66-.31-5.46-1.37-5.46-6.08 0-1.34.46-2.44 1.24-3.3-.12-.31-.54-1.57.12-3.27 0 0 1.01-.33 3.3 1.26a11.1 11.1 0 0 1 3-.42c1.02 0 2.05.14 3 .42 2.29-1.59 3.3-1.26 3.3-1.26.66 1.7.24 2.96.12 3.27.77.86 1.24 1.96 1.24 3.3 0 4.72-2.8 5.76-5.47 6.07.43.38.82 1.12.82 2.27v3.36c0 .32.22.7.82.58 4.76-1.55 8.2-5.94 8.2-11.12C23.5 5.74 18.27.5 12 .5z'/%3E%3C/svg%3E");
 }
 
 /* Skills Section */
@@ -242,7 +255,8 @@ li {
     padding: 0 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    gap: 2.25rem;
+    align-items: stretch;
 }
 
 @media (max-width: 900px) {
@@ -257,6 +271,7 @@ li {
     border-radius: 16px;
     padding: 1.75rem 1.75rem 1.5rem;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 #skills .skill-item-card h3 {
@@ -319,14 +334,6 @@ li {
     margin: 0.75rem auto 3.25rem;
 }
 
-#skills .skills-grid {
-    gap: 2.25rem;
-    align-items: stretch;
-}
-
-#skills .skill-item-card {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
 
 #skills .skill-item-card:hover {
     transform: translateY(-3px);
@@ -514,6 +521,8 @@ nav {
     opacity: 1;
     text-decoration: none;
 }
+
+.navigation-links a.is-active { color: var(--accent); opacity: 1; }
 
 @media (max-width: 860px) {
     .navigation-bar {
@@ -922,10 +931,6 @@ nav {
     font-size: 3rem;
     margin-bottom: 2.25rem;
 }
-  
-#about > .section-intro {
-    margin-bottom: 3rem;
-}
 
 /* Footer Section */
 
@@ -1005,11 +1010,13 @@ nav {
     border-radius: 16px;
     padding: 2.25rem 2.15rem;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.26);
+    text-align: left;
 }
 
 #contact .contact-card-title {
     font-size: 1.55rem;
-    margin: 0 0 1.75rem;
+    margin: 0 0 1.5rem;
+    text-align: left;
 }
 
 #contact .contact-form {
@@ -1021,7 +1028,8 @@ nav {
     font-size: 0.95rem;
     color: var(--text-primary);
     opacity: 0.9;
-    margin-bottom: -0.55rem;
+    margin: 0 0 0.35rem;
+    display: block;
 }
 
 #contact .contact-input,
@@ -1106,6 +1114,14 @@ nav {
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+#contact .contact-info-icon .github-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    fill: currentColor;
+    filter: brightness(0) invert(1);
+}
+
 #contact .contact-info-label {
     display: block;
     font-size: 0.9rem;
@@ -1135,39 +1151,6 @@ nav {
     }
 }
 
-#contact .contact-form-card,
-#contact .contact-card {
-  text-align: left;
-}
-
-#contact .contact-card-title {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-#contact .contact-form {
-  width: 100%;
-  justify-items: stretch;
-}
-
-#contact .contact-label {
-  display: block;
-  text-align: left;
-  margin: 0 0 0.35rem;
-}
-
-#contact .contact-input,
-#contact .contact-textarea {
-  width: 100%;
-  max-width: none;
-  display: block;
-}
-
-#contact .contact-submit {
-  width: 100%;
-  justify-self: stretch;
-}
-
 #contact form {
   width: 100%;
 }
@@ -1178,34 +1161,3 @@ nav {
   width: 100%;
   max-width: none;
 }
-
-.navigation-links a.is-active { color: var(--accent); opacity: 1; }
-
-/* Contact: GitHub image icon inside the circle */
-  
-#contact .contact-info-icon .github-icon {
-    width: 22px;
-    height: 22px;
-    display: block;
-    fill: currentColor;
-    filter: brightness(0) invert(1);
-}
-
-/* Projects: "View" + GitHub icon in the same pill */
-
-#projects .project-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-#projects .project-btn::after {
-    content: "";
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-  
-    /* SVG GitHub mark (white) */
-    background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12 .5C5.73.5.5 5.74.5 12.2c0 5.18 3.44 9.57 8.2 11.12.6.12.82-.26.82-.58v-2.23c-3.34.74-4.04-1.65-4.04-1.65-.55-1.42-1.34-1.8-1.34-1.8-1.1-.77.08-.76.08-.76 1.22.09 1.86 1.27 1.86 1.27 1.08 1.9 2.83 1.35 3.52 1.03.11-.8.42-1.35.76-1.66-2.66-.31-5.46-1.37-5.46-6.08 0-1.34.46-2.44 1.24-3.3-.12-.31-.54-1.57.12-3.27 0 0 1.01-.33 3.3 1.26a11.1 11.1 0 0 1 3-.42c1.02 0 2.05.14 3 .42 2.29-1.59 3.3-1.26 3.3-1.26.66 1.7.24 2.96.12 3.27.77.86 1.24 1.96 1.24 3.3 0 4.72-2.8 5.76-5.47 6.07.43.38.82 1.12.82 2.27v3.36c0 .32.22.7.82.58 4.76-1.55 8.2-5.94 8.2-11.12C23.5 5.74 18.27.5 12 .5z'/%3E%3C/svg%3E");
-  }
-  
