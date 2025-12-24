@@ -510,8 +510,8 @@ nav {
     border-radius: 0;
 
     background: linear-gradient(180deg,
-            rgba(22, 26, 35, 0.95),
-            rgba(22, 26, 35, 0.85));
+            rgba(5, 13, 34, 0.98),
+            rgba(5, 13, 34, 0.92));
 }
 
 #skills > .section-title,
@@ -558,8 +558,8 @@ nav {
             rgba(110, 168, 254, 0.12),
             rgba(5, 13, 34, 0)),
             linear-gradient(180deg,
-            rgba(22, 26, 35, 0.95),
-            rgba(22, 26, 35, 0.85));
+            rgba(5, 13, 34, 0.98),
+            rgba(5, 13, 34, 0.92));
 }
 
 #projects > .section-title,
@@ -688,7 +688,7 @@ nav {
     background: linear-gradient(
         180deg,
         rgba(5, 13, 34, 0.98),
-        rgba(5, 13, 34, 0.88)
+        rgba(5, 13, 34, 0.92)
         );
 }
 
@@ -817,8 +817,8 @@ nav {
 
     background: linear-gradient(
         180deg,
-        rgba(22, 26, 35, 0.95),
-        rgba(22, 26, 35, 0.85)
+        rgba(5, 13, 34, 0.98),
+        rgba(5, 13, 34, 0.92)
     );
 }
 
@@ -944,8 +944,8 @@ nav {
 
     background: linear-gradient(
         180deg,
-        rgba(22, 26, 35, 0.95),
-        rgba(22, 26, 35, 0.85)
+        rgba(5, 13, 34, 0.98),
+        rgba(5, 13, 34, 0.92)
     );
 }
 
