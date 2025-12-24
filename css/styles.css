@@ -187,16 +187,58 @@ nav {
 
 .navigation-links a.is-active { color: var(--accent); opacity: 1; }
 
+/* Responsive Navigation Bar (hamburger icon) */
+
+.navigation-toggle {
+    display: none;
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.navigation-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background-color: rgba(230, 230, 235, 0.9);
+}
+
 @media (max-width: 860px) {
     .navigation-bar {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .navigation-toggle {
+        display: inline-flex;
     }
 
     .navigation-links {
-        flex-wrap: wrap;
-        row-gap: 0.75rem;
-        column-gap: 1.25rem;
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-top: 0.25rem;
+    }
+
+    header.nav-open .navigation-links {
+        display: flex;
+    }
+
+    .navigation-links li a {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0.85rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
     }
 }
 

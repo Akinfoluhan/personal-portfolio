@@ -2,6 +2,43 @@
     const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   
     const header = document.querySelector("header");
+    
+    // Mobile nav: hamburger toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMenu = document.getElementById("primary-navigation");
+
+    const setMobileNavOpen = (open) => {
+      if (!header || !navToggle) return;
+
+      header.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+
+    if (navToggle && navMenu && header) {
+      navToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMobileNavOpen(!header.classList.contains("nav-open"));
+      });
+
+      // Close when a link is clicked
+      navMenu.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => setMobileNavOpen(false));
+      });
+
+      // Close on outside click
+      document.addEventListener("click", (e) => {
+        if (!header.classList.contains("nav-open")) return;
+        if (!header.contains(e.target)) setMobileNavOpen(false);
+      });
+
+      // Close on Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setMobileNavOpen(false);
+      });
+    }
+
+
     const navLinks = Array.from(document.querySelectorAll(".navigation-links a[href^='#']"));
     const heroLinks = Array.from(document.querySelectorAll("#hero a[href^='#']"));
     const inPageLinks = [...navLinks, ...heroLinks];
