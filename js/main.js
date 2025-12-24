@@ -3,6 +3,9 @@
   
     const header = document.querySelector("header");
     const navLinks = Array.from(document.querySelectorAll(".navigation-links a[href^='#']"));
+    const heroLinks = Array.from(document.querySelectorAll("#hero a[href^='#']"));
+    const inPageLinks = [...navLinks, ...heroLinks];
+
     const sections = navLinks
       .map((a) => document.querySelector(a.getAttribute("href")))
       .filter(Boolean);
@@ -12,7 +15,7 @@
     // -----------------------------
     // 1) Smooth scroll with offset
     // -----------------------------
-    navLinks.forEach((link) => {
+    inPageLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
         const target = document.querySelector(href);
@@ -131,91 +134,87 @@
     }
   
     // -------------------------------------
-    // 4) Contact form: toast + clear fields
+    // 4) Contact form: send via Formspree
     // -------------------------------------
-    // -------------------------------------
-// 4) Contact form: send via Formspree
-// -------------------------------------
-const contactForm = document.querySelector("#contact .contact-form");
+    const contactForm = document.querySelector("#contact .contact-form");
 
-const showToast = (message) => {
-  const toast = document.createElement("div");
-  toast.textContent = message;
+    const showToast = (message) => {
+      const toast = document.createElement("div");
+      toast.textContent = message;
 
-  toast.style.position = "fixed";
-  toast.style.left = "50%";
-  toast.style.bottom = "22px";
-  toast.style.transform = "translateX(-50%)";
-  toast.style.padding = "12px 16px";
-  toast.style.borderRadius = "12px";
-  toast.style.background = "rgba(10, 16, 34, 0.92)";
-  toast.style.border = "1px solid rgba(255,255,255,0.10)";
-  toast.style.boxShadow = "0 10px 28px rgba(0,0,0,0.35)";
-  toast.style.color = "rgba(230,230,235,0.95)";
-  toast.style.zIndex = "9999";
-  toast.style.maxWidth = "92vw";
-  toast.style.textAlign = "center";
+      toast.style.position = "fixed";
+      toast.style.left = "50%";
+      toast.style.bottom = "22px";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.padding = "12px 16px";
+      toast.style.borderRadius = "12px";
+      toast.style.background = "rgba(10, 16, 34, 0.92)";
+      toast.style.border = "1px solid rgba(255,255,255,0.10)";
+      toast.style.boxShadow = "0 10px 28px rgba(0,0,0,0.35)";
+      toast.style.color = "rgba(230,230,235,0.95)";
+      toast.style.zIndex = "9999";
+      toast.style.maxWidth = "92vw";
+      toast.style.textAlign = "center";
 
-  if (!prefersReducedMotion) {
-    toast.style.opacity = "0";
-    toast.style.transition = "opacity 250ms ease";
-  }
-
-  document.body.appendChild(toast);
-
-  requestAnimationFrame(() => {
-    if (!prefersReducedMotion) toast.style.opacity = "1";
-  });
-
-  setTimeout(() => {
-    if (!prefersReducedMotion) toast.style.opacity = "0";
-    setTimeout(() => toast.remove(), prefersReducedMotion ? 0 : 250);
-  }, 2200);
-};
-
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // Make sure you replaced action="#" in HTML with your real Formspree endpoint
-    if (!contactForm.action || contactForm.action.endsWith("#")) {
-      showToast("⚠️ Add your Formspree form URL to the form's action attribute.");
-      return;
-    }
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn ? submitBtn.textContent : "";
-
-    try {
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
+      if (!prefersReducedMotion) {
+        toast.style.opacity = "0";
+        toast.style.transition = "opacity 250ms ease";
       }
 
-      const formData = new FormData(contactForm);
+      document.body.appendChild(toast);
 
-      const res = await fetch(contactForm.action, {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
+      requestAnimationFrame(() => {
+        if (!prefersReducedMotion) toast.style.opacity = "1";
       });
 
-      if (res.ok) {
-        contactForm.reset();
-        showToast("✅ Message sent! I’ll get back to you ASAP.");
-      } else {
-        showToast("❌ Something went wrong. Please try again in a moment.");
-      }
-    } catch (err) {
-      showToast("❌ Network error. Check your connection and try again.");
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-      }
+      setTimeout(() => {
+        if (!prefersReducedMotion) toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), prefersReducedMotion ? 0 : 250);
+      }, 2200);
+    };
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (!contactForm.action || contactForm.action.endsWith("#")) {
+          showToast("⚠️ Add your Formspree form URL to the form's action attribute.");
+          return;
+        }
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : "";
+
+        try {
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+          }
+
+          const formData = new FormData(contactForm);
+
+          const res = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          if (res.ok) {
+            contactForm.reset();
+            showToast("✅ Message sent! I’ll get back to you ASAP.");
+          } else {
+            showToast("❌ Something went wrong. Please try again in a moment.");
+          }
+        } catch (err) {
+          showToast("❌ Network error. Check your connection and try again.");
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }
+        }
+      });
     }
-  });
-}
 
   
     // -------------------------------------
