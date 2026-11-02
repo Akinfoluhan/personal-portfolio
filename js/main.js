@@ -134,61 +134,37 @@
     }
   
     // -------------------------------------
-    // 3b) Project filter: Software / Mechanical
+    // 3b) Project filter extras
+    //     (the filtering itself is pure CSS; this only
+    //      keeps counts accurate and adds a fade-in)
     // -------------------------------------
-    const filterButtons = Array.from(document.querySelectorAll("#projects .project-filter"));
+    const filterInputs = Array.from(document.querySelectorAll("#projects .project-filter-input"));
     const projectCards = Array.from(document.querySelectorAll("#projects .project-item-card[data-category]"));
 
-    if (filterButtons.length && projectCards.length) {
-      // Fill in the count badge on each tab
-      document.querySelectorAll("#projects [data-count-for]").forEach((badge) => {
-        const cat = badge.getAttribute("data-count-for");
-        badge.textContent = projectCards.filter((c) => c.dataset.category === cat).length;
-      });
+    document.querySelectorAll("#projects [data-count-for]").forEach((badge) => {
+      const cat = badge.getAttribute("data-count-for");
+      badge.textContent = projectCards.filter((c) => c.dataset.category === cat).length;
+    });
 
-      const applyFilter = (category, animate) => {
-        filterButtons.forEach((btn) => {
-          const active = btn.dataset.filter === category;
-          btn.classList.toggle("is-active", active);
-          btn.setAttribute("aria-selected", String(active));
-        });
-
-        projectCards.forEach((card) => {
-          const show = card.dataset.category === category;
-          card.hidden = !show;
-          if (show && animate && !prefersReducedMotion) {
-            // Restart a quick fade-up for cards coming into view
+    filterInputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        projectCards
+          .filter((card) => card.dataset.category === input.value)
+          .forEach((card) => {
+            if (prefersReducedMotion) return;
             card.style.transition = "none";
             card.style.opacity = "0";
             card.style.transform = "translateY(12px)";
             requestAnimationFrame(() => {
               requestAnimationFrame(() => {
                 card.style.transition = "opacity 350ms ease, transform 350ms ease";
-                doReveal(card);
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
               });
             });
-          }
-        });
-      };
-
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", () => applyFilter(btn.dataset.filter, true));
+          });
       });
-
-      // Arrow-key navigation between tabs
-      filterButtons.forEach((btn, i) => {
-        btn.addEventListener("keydown", (e) => {
-          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-          e.preventDefault();
-          const next = filterButtons[(i + (e.key === "ArrowRight" ? 1 : -1) + filterButtons.length) % filterButtons.length];
-          next.focus();
-          next.click();
-        });
-      });
-
-      const initial = filterButtons.find((b) => b.classList.contains("is-active")) || filterButtons[0];
-      applyFilter(initial.dataset.filter, false);
-    }
+    });
 
     // -------------------------------------
     // 4) Contact form: send via Formspree

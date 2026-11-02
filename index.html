@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Akinfoluhan's Portfolio</title>
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/styles.css?v=2" />
     </head>
 
     <body>
@@ -182,19 +182,24 @@
                     A selection of projects across software, mechanical engineering, and robotics.
                 </p>
 
-                <div class="project-filters" role="tablist" aria-label="Filter projects by category">
-                    <button class="project-filter is-active" type="button" role="tab" aria-selected="true" aria-controls="project-grid" data-filter="software">
-                        Software <span class="project-filter-count" data-count-for="software"></span>
-                    </button>
-                    <button class="project-filter" type="button" role="tab" aria-selected="false" aria-controls="project-grid" data-filter="mechanical">
-                        Mechanical <span class="project-filter-count" data-count-for="mechanical"></span>
-                    </button>
-                    <button class="project-filter" type="button" role="tab" aria-selected="false" aria-controls="project-grid" data-filter="robotics">
-                        Robotics &amp; Embedded <span class="project-filter-count" data-count-for="robotics"></span>
-                    </button>
+                <!-- Category filter: works with CSS alone (radio buttons), so it never depends on JS loading -->
+                <input class="project-filter-input" type="radio" name="project-filter" id="filter-software" value="software" checked />
+                <input class="project-filter-input" type="radio" name="project-filter" id="filter-mechanical" value="mechanical" />
+                <input class="project-filter-input" type="radio" name="project-filter" id="filter-robotics" value="robotics" />
+
+                <div class="project-filters" role="radiogroup" aria-label="Filter projects by category">
+                    <label class="project-filter" for="filter-software">
+                        Software <span class="project-filter-count" data-count-for="software">7</span>
+                    </label>
+                    <label class="project-filter" for="filter-mechanical">
+                        Mechanical <span class="project-filter-count" data-count-for="mechanical">3</span>
+                    </label>
+                    <label class="project-filter" for="filter-robotics">
+                        Robotics &amp; Embedded <span class="project-filter-count" data-count-for="robotics">3</span>
+                    </label>
                 </div>
 
-                <div class="project-grid" id="project-grid" role="tabpanel">
+                <div class="project-grid" id="project-grid">
 
                     <article class="project-item-card" data-category="software">
                         <h3>Limit Order Book &amp; Matching Engine (In progress)</h3>
@@ -693,6 +698,6 @@
         </footer>
         
 
-        <script src="js/main.js"></script>
+        <script src="js/main.js?v=2"></script>
     </body>
 </html>
