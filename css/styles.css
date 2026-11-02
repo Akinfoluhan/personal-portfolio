@@ -594,6 +594,87 @@ nav {
     gap: 2.25rem;
 }
 
+/* Project category filter (Software / Mechanical) */
+#projects .project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    width: fit-content;
+    margin: -1.5rem auto 2.75rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#projects .project-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.35rem;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#projects .project-filter:hover {
+    color: var(--text-primary);
+}
+
+#projects .project-filter:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+#projects .project-filter.is-active {
+    background: var(--accent);
+    color: #0a1022;
+}
+
+#projects .project-filter-count {
+    min-width: 1.4rem;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#projects .project-filter.is-active .project-filter-count {
+    background: rgba(10, 16, 34, 0.18);
+}
+
+@media (max-width: 560px) {
+    #projects .project-filters {
+        flex-wrap: wrap;
+        border-radius: 20px;
+        max-width: calc(100% - 3rem);
+    }
+
+    #projects .project-filter {
+        padding: 0.55rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+#projects .project-item-card[hidden] {
+    display: none;
+}
+
+#projects .project-item-card code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85em;
+    padding: 0.08rem 0.35rem;
+    border-radius: 6px;
+    background: rgba(110, 168, 254, 0.10);
+    color: var(--text-primary);
+}
+
 @media (max-width: 900px) {
     #projects .project-grid {
         grid-template-columns: 1fr;

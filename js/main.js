@@ -134,6 +134,63 @@
     }
   
     // -------------------------------------
+    // 3b) Project filter: Software / Mechanical
+    // -------------------------------------
+    const filterButtons = Array.from(document.querySelectorAll("#projects .project-filter"));
+    const projectCards = Array.from(document.querySelectorAll("#projects .project-item-card[data-category]"));
+
+    if (filterButtons.length && projectCards.length) {
+      // Fill in the count badge on each tab
+      document.querySelectorAll("#projects [data-count-for]").forEach((badge) => {
+        const cat = badge.getAttribute("data-count-for");
+        badge.textContent = projectCards.filter((c) => c.dataset.category === cat).length;
+      });
+
+      const applyFilter = (category, animate) => {
+        filterButtons.forEach((btn) => {
+          const active = btn.dataset.filter === category;
+          btn.classList.toggle("is-active", active);
+          btn.setAttribute("aria-selected", String(active));
+        });
+
+        projectCards.forEach((card) => {
+          const show = card.dataset.category === category;
+          card.hidden = !show;
+          if (show && animate && !prefersReducedMotion) {
+            // Restart a quick fade-up for cards coming into view
+            card.style.transition = "none";
+            card.style.opacity = "0";
+            card.style.transform = "translateY(12px)";
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                card.style.transition = "opacity 350ms ease, transform 350ms ease";
+                doReveal(card);
+              });
+            });
+          }
+        });
+      };
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => applyFilter(btn.dataset.filter, true));
+      });
+
+      // Arrow-key navigation between tabs
+      filterButtons.forEach((btn, i) => {
+        btn.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          e.preventDefault();
+          const next = filterButtons[(i + (e.key === "ArrowRight" ? 1 : -1) + filterButtons.length) % filterButtons.length];
+          next.focus();
+          next.click();
+        });
+      });
+
+      const initial = filterButtons.find((b) => b.classList.contains("is-active")) || filterButtons[0];
+      applyFilter(initial.dataset.filter, false);
+    }
+
+    // -------------------------------------
     // 4) Contact form: send via Formspree
     // -------------------------------------
     const contactForm = document.querySelector("#contact .contact-form");
@@ -223,7 +280,7 @@
     const footerP = document.querySelector(".site-footer p");
     if (footerP) {
       const year = new Date().getFullYear();
-      footerP.innerHTML = `© ${year} Akinfoluhan Akinleye. Built with HTML &amp; CSS.`;
+      footerP.innerHTML = `© ${year} Akinfoluhan Akinleye. Built with HTML, CSS &amp; JavaScript.`;
     }
   })();
   
